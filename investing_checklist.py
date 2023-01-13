@@ -57,10 +57,10 @@ marketCap = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div
 marketCap = marketCap.text
 
 driver.get(f'https://www.gurufocus.com/stock/{ticker}/dcf')
-time.sleep(3)
+time.sleep(10)
 price = driver.find_element(By.XPATH, '/html/body/div[1]/div/section/section/main/div[1]/div[2]/div/span[1]')
 price = price.text
-dcf = driver.find_element(By.XPATH, '/html/body/div[1]/div/section/section/main/div[1]/div[4]/div/div[2]/div[1]/div/div[1]/div[2]/div/div[3]/div[2]')
+dcf = driver.find_element(By.XPATH, '/html/body/div[1]/div/section/section/main/div[1]/div[4]/div/div[2]/div[1]/div/div[1]/div[2]/div/div[4]/div[2]')
 dcf = dcf.text
 
 #PRINT RESULTS
