@@ -54,11 +54,19 @@ button2 = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3
 driver.execute_script('arguments[0].click()', button2)
 time.sleep(5)
 marketCap = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section[1]/div/div[2]/div[2]/ul/li[7]/span[2]/span')
+marketCap = marketCap.text
+
+driver.get(f'https://www.gurufocus.com/stock/{ticker}/dcf')
+time.sleep(3)
+price = driver.find_element(By.XPATH, '/html/body/div[1]/div/section/section/main/div[1]/div[2]/div/span[1]')
+price = price.text
+dcf = driver.find_element(By.XPATH, '/html/body/div[1]/div/section/section/main/div[1]/div[4]/div/div[2]/div[1]/div/div[1]/div[2]/div/div[3]/div[2]')
+dcf = dcf.text
 
 #PRINT RESULTS
 print('============================================================')
 print(f'Company: {ticker}')
-print('Market Capilization (Recommened: > 500M):    ' + marketCap.text)
+print('Market Capilization (Recommened: > 500M):    ' + marketCap)
 print('P/E Ratio (Recommended: < 15):   ' + ks['Price/Earnings'])
 print('P/B Ratio (Recommended: < 1.5):  ' + ks['Price/Book'])
 print('Current Ratio (Reccomended: > 1.5):  ' + ks['Current Ratio*'])
@@ -68,5 +76,7 @@ print('5 Year Net Income Growth Rate (Recommended: > 5%):   ' + fiveYearNetIncom
 print('10 Year Revenue Growth Rate (Recommended: > 5%):    ' + tenYearRevenueGrowthRate)
 print('10 Tear EPS Growth Rate (Recommended: > 5%):    ' + tenYearEPSGrowthRate)
 print('Interest Coverage (Recommended: > 6.0, 8.0):    ' + ks['Interest Coverage'])
+print('Market Price:    ' + price)
+print('DCF:     ' + dcf)
 print('============================================================')
 driver.quit()
