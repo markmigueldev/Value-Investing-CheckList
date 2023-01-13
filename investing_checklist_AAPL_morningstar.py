@@ -50,7 +50,7 @@ tenYearEPSGrowthRate = tenYearEPSGrowthRate.text
 #scrape marketcap
 button2 = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/div[3]/nav/ul/li[1]/a/span')
 driver.execute_script('arguments[0].click()', button2)
-time.sleep(2)
+time.sleep(5)
 marketCap = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section[1]/div/div[2]/div[2]/ul/li[7]/span[2]/span')
 
 #PRINT RESULTS

@@ -22,8 +22,6 @@ time.sleep(3)
 # # print the page source
 # print(driver.page_source)
 
-# pe
-
 # key statistics
 ks = dict()
 element = driver.find_elements(By.CLASS_NAME, 'dp-pair')
@@ -32,14 +30,16 @@ for e in element:
     ks[elem[0].text]=elem[1].text
 
 #find and click the button for ROE 5 year average
-button = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[1]/div[1]/div/div/div/button[3]')
+button = driver.find_element(By.ID, 'keyStatsOperatingAndEfficiency')
+#button = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[1]/div[1]/div/div/div/button[3]')
 driver.execute_script('arguments[0].click();', button)
 time.sleep(3)
-data = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[4]/div/div/div/div/div[1]/table/tbody/tr[7]/td[13]')
+data = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[1]/div/div/div/div/button[3]')
 roe5Year = data.text
 
 #find and click the button for 5Y Net income growth rate, 10Y Revenue Growth Rate, 10Y EPS Growth Rate
-button1 = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[1]/div[1]/div/div/div/button[2]')
+#button1 = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[1]/div[1]/div/div/div/button[2]')
+button1 = driver.find_element(By.ID, 'keyStatsgrowthTable')
 driver.execute_script('arguments[0].click();', button1)
 time.sleep(3)
 fiveYearNetIncomeGrowthRate = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section/sal-components/div/sal-components-stocks-valuation/div/div[2]/div/div/div[3]/div/div/div/div/div/div[1]/table/tbody/tr[14]/td[11]')
@@ -52,7 +52,7 @@ tenYearEPSGrowthRate = tenYearEPSGrowthRate.text
 #scrape marketcap
 button2 = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/div[3]/nav/ul/li[1]/a/span')
 driver.execute_script('arguments[0].click()', button2)
-time.sleep(3)
+time.sleep(5)
 marketCap = driver.find_element(By.XPATH, '/html/body/div/div/div/div/div[2]/div[3]/div/main/div/div/div[1]/section[1]/div/div[2]/div[2]/ul/li[7]/span[2]/span')
 
 #PRINT RESULTS
@@ -69,11 +69,4 @@ print('10 Year Revenue Growth Rate (Recommended: > 5%):    ' + tenYearRevenueGro
 print('10 Tear EPS Growth Rate (Recommended: > 5%):    ' + tenYearEPSGrowthRate)
 print('Interest Coverage (Recommended: > 6.0, 8.0):    ' + ks['Interest Coverage'])
 print('============================================================')
-# for e in roeYear0:
-#     print(e.text)
-
-# # # pprint(roeYear0)
-
-# # for r in roeYear0:
-# #     r.find_element
 driver.quit()
